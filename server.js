@@ -9,7 +9,11 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', (req, resp)=>{
-    resp.render('room');
+    resp.redirect(`/${uuidv4()}`);
 });
+
+app.get('/:room', (req, resp)=>{
+    resp.render('room',{roomId: req.params.room})
+})
 
 app.listen(3000);
